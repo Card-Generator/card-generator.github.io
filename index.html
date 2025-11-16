@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Character Card Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4285f4"/>
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico">
+  <link rel="canonical" href="https://urboitom.github.io/Card-Generator/" />
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta charset="UTF-8">
+
+  <!-- SEO and Social Sharing Meta Tags -->
+  <meta name="description" content="A tool to generate detailed character cards for AI chatbots using Google's Gemini models.">
+  <meta name="author" content="UrBoiTom">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://urboitom.github.io/Card-Generator/">
+  <meta property="og:title" content="AI Character Card Generator">
+  <meta property="og:description" content="A tool to generate detailed character cards for AI chatbots using Google's Gemini models.">
+  <meta property="og:image" content="https://urboitom.github.io/Card-Generator/Card-Generator.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://urboitom.github.io/Card-Generator/">
+  <meta property="twitter:title" content="AI Character Card Generator">
+  <meta property="twitter:description" content="A tool to generate detailed character cards for AI chatbots using Google's Gemini models.">
+  <meta property="twitter:image" content="https://urboitom.github.io/Card-Generator/Card-Generator.webp">
+
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4025970528061153"
+     crossorigin="anonymous"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^0.7.0"
+      }
+    }
+  </script>
+  <script type="module" crossorigin src="./assets/index-ESzvcgLO.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-3CKol5_e.css">
+</head>
+<body>
+  <div id="app-container">
+    <div class="ad-container ad-left">
+      <!-- Side Ad -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-4025970528061153"
+          data-ad-slot="8037721398"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+    <main>
+      <h1>AI Character Card Generator</h1>
+      <div class="controls">
+        <details class="settings-container">
+        <summary>Settings</summary>
+        <label for="model-selector">Select Model:</label>
+        <select id="model-selector">
+          <option value="gemini-2.5-pro">gemini-2.5-pro</option>
+          <option value="gemini-2.5-flash">gemini-2.5-flash</option>
+        </select>
+        <label for="sheet-id">Examples Sheet ID:</label>
+        <br>
+        <input type="text" id="sheet-id" value="1tOgPaL4lJZ5Jfen83stiNiVLMzn1FiRf8ZVVJTZv420">
+        <br>
+        <label for="api-key">API Key:</label>
+        <br>
+        <input type="password" id="api-key">
+          <span class="tooltip-trigger"><a href="https://aistudio.google.com/app/apikey" target="_blank">?</a>
+            <span class="tooltip-text">An input for a Google Gemini API key, available at https://aistudio.google.com/app/apikey. This key will be hidden on reload and ONLY saved locally. Click on this question mark to get a key.</span>
+          </span>
+          <br>
+          <label for="search-grounding">Enable Search Grounding:</label>
+          <br>
+          <input type="checkbox" id="search-grounding" checked>
+          <br>
+          <label for="replace-char-name">Replace character name with {{char}}</label>
+          <br>
+          <input type="checkbox" id="replace-char-name" checked>
+          <br>
+          <label for="retry-on-error">Retry on error:</label>
+          <br>
+          <input type="checkbox" id="retry-on-error">
+          <p style="font-size: 0.75em;">Warning: Retry on error may cause major issues. Only use this if you know what you are doing.</p>
+          <br>
+          <label for="temperature-slider">Temperature: <span id="temperature-value">1</span></label>
+          <br>
+          <input type="range" id="temperature-slider" min="0" max="2" step="0.05" value="1">
+        <details>
+          <summary>Card Format:</summary>
+          <textarea id="card-format"></textarea>
+        </details>
+      </details>
+      <label for="user-prompt">Character Details:</label>
+      <div class="textarea-container">
+        <button id="random-idea-button" class="icon-button" title="Generate a random character idea (Ctrl+I)">
+          <img src="icons/bulb.svg" alt="Generate random idea">
+        </button>
+        <textarea id="user-prompt" placeholder="e.g., A tired detective, haunted by a past case..."></textarea>
+      </div>
+      <label for="scenarios-container">Scenarios (Optional):</label>
+      <div id="scenarios-container">
+        <button id="add-scenario-button" type="button">+</button>
+        </div>
+        <div id="image-upload-container" style="margin-top: 1rem;">
+          <label for="image-upload-container">Media (Optional):</label>
+          <input type="file" id="image-upload" accept="image/*,video/*" multiple style="display: none;">
+          <label for="image-upload" class="image-upload-label" title="Upload media">⤒</label>
+        </div>
+        <div id="image-preview-container"></div>
+        <div class="button-container">
+          <button id="generate-button">Generate Character Card</button>
+          <button id="export-v2-button" title="Requires description, at least one first message and at least one image." disabled>Export as V2 Card</button>
+        </div>
+    </div>
+    <details open class="output-container out-details">
+      <summary class="output-label">Character Card</summary>
+      <div id="output" contenteditable="true"></div>
+    </details>
+    <div id="first-messages-output-container"></div>
+    </main>
+    <div class="ad-container ad-right">
+      <!-- Side Ad -->
+      <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-4025970528061153"
+          data-ad-slot="8037721398"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
+  <footer id="disclaimer-footer">Disclaimer:<br>This page is hosted with github pages, which means no data gets shared, it all runs on your device and none gets saved anywhere other than clientside.<br>Nobody else can see your data without acces to your device.<br><a href="../terms.html" target="_blank">Terms of Use</a><br><button type="button" id="disclaimer-button">Ok</button></footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        const serviceWorkerPath = '/Card-Generator/serviceworker.js';
+        navigator.serviceWorker.register(serviceWorkerPath)
+          .then((registration) => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch((error) => {
+            console.log('ServiceWorker registration failed: ', error);
+          });
+      });
+    }
+</script>
+</body>
+</html>
