@@ -1,1 +1,1 @@
-# [Card Generator](https://urboitom.github.io/Card-Generator)
+# [Card Generator](https://card-generator.github.io/)
